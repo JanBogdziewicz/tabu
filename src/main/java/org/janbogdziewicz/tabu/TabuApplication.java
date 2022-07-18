@@ -37,6 +37,7 @@ public class TabuApplication {
 //			Card card = new Card("Word", stopWords);
 //			cardService.addCard(card);
 			Card card = cardService.findCardByWord("Word");
+			System.out.println("test");
 			System.out.println(card.getWord());
 		};
 	}
