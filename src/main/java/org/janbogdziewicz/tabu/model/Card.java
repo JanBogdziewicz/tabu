@@ -26,9 +26,7 @@ import java.util.Objects;
 @NoArgsConstructor
 public class Card implements Serializable {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(nullable = false, updatable = false)
-  private Long id;
   private String word;
   @ElementCollection
   private List<String> stopWords;
@@ -36,18 +34,5 @@ public class Card implements Serializable {
   public Card(String word, List<String> stopWords) {
     this.word = word;
     this.stopWords = new ArrayList<>(stopWords);
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-    Card card = (Card) o;
-    return id != null && Objects.equals(id, card.id);
-  }
-
-  @Override
-  public int hashCode() {
-    return getClass().hashCode();
   }
 }

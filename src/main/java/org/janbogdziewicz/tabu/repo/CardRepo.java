@@ -8,7 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface CardRepo extends JpaRepository<Card, Long> {
-  Optional<Card> findCardById(Long id);
   Optional<Card> findCardByWord(String word);
-  void deleteCardById(Long id);
+  void deleteCardByWord(String word);
 }
