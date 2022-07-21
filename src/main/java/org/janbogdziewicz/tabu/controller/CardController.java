@@ -33,13 +33,13 @@ public class CardController {
     return new ResponseEntity<>(cards, HttpStatus.OK);
   }
 
-  @PostMapping("/add")
+  @PostMapping
   public ResponseEntity<Card> addNewCard(@RequestBody Card card) {
     Card newCard = cardService.addCard(card);
     return new ResponseEntity<>(newCard, HttpStatus.CREATED);
   }
 
-  @DeleteMapping("/delete/{word}")
+  @DeleteMapping("/{word}")
   public ResponseEntity<?> deleteCard(@PathVariable("word") String word) {
     cardService.deleteCard(word);
     return new ResponseEntity<>(HttpStatus.OK);

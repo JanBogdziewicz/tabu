@@ -19,7 +19,8 @@ public class CardService {
     this.cardRepo = cardRepo;
   }
   public Card findCardByWord(String word) throws CardNotFoundException {
-    return cardRepo.findCardByWord(word).orElseThrow(() -> new CardNotFoundException("Card by name " + word + " was not found"));
+    String wordLowerCase = word.toLowerCase();
+    return cardRepo.findCardByWord(wordLowerCase).orElseThrow(() -> new CardNotFoundException("Card by name " + wordLowerCase + " was not found"));
   }
 
   public List<Card> findAllCards() {
@@ -27,10 +28,14 @@ public class CardService {
   }
 
   public Card addCard(Card card) {
+    card.setWord(card.getWord().toLowerCase());
+    card.setStopWords(card.getStopWords().stream()
+            .map(String::toLowerCase).toList());
     return cardRepo.save(card);
   }
 
   public void deleteCard(String word) {
+    word = word.toLowerCase();
     cardRepo.deleteCardByWord(word);
   }
 

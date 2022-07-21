@@ -23,17 +23,7 @@ public class TabuApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner() {
 		return args -> {
-//			List<String> stopWords = new ArrayList<>();
-//			stopWords.add("raz");
-//			stopWords.add("dwa");
-//			stopWords.add("trzy");
-//			stopWords.add("cztery");
-//			stopWords.add("piec");
-//			Card card = new Card("Word", stopWords);
-//			cardService.addCard(card);
-			Card card = cardService.findCardByWord("Word");
-			System.out.println("test");
-			System.out.println(card.getWord());
+
 		};
 	}
 }
